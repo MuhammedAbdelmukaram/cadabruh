@@ -109,6 +109,38 @@ a.secondary {
   flex-shrink: 0;
 }
 
+.iframeWrapper {
+  position: relative;
+  border-radius: 30px;
+  margin-left: 20px;
+  overflow: hidden;
+
+  /* Default size for PC */
+  width: 900px;
+  height: 800px;
+}
+
+/* Iframe styling */
+.iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Responsive styling for mobile */
+@media (max-width: 968px) {
+  .iframeWrapper {
+    width: 100%;
+    height: 650px;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    margin-left: 0;
+  }
+}
+
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {

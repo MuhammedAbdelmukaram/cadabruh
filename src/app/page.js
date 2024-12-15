@@ -1,6 +1,7 @@
 import React from 'react';
 import CursorEffect from "@/app/components/CursorEffect";
 import Header from "@/app/components/Header";
+import styles from "./Page.module.css";
 
 const Page = () => {
     return (
@@ -15,21 +16,18 @@ const Page = () => {
                                 <p>Cadabruh, making your on-chain swaps quick and anonymous</p>
                             </div>
                         </div>
-                        <iframe
-                            src="https://houdiniswap.com/?partnerId=2&widgetMode=true"
-                            style={{
-                                width: '900px',
-                                height: '800px',
-                                marginLeft: '20px',
-                                borderRadius: '30px',
-                                border: 'none' // Optional: to remove iframe border
-                            }}
-                            allow="clipboard-write"
-                        ></iframe>
+                        {/* Responsive iframe wrapper */}
+                        <div className={styles.iframeWrapper}>
+                            <iframe
+                                src="https://houdiniswap.com/?partnerId=2&widgetMode=true"
+                                className={styles.iframe}
+                                allow="clipboard-write"
+                            ></iframe>
+                        </div>
                     </div>
                 </section>
             </main>
-            <CursorEffect/>
+            <CursorEffect />
         </div>
     );
 };
