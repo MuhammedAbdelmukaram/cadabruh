@@ -14,7 +14,7 @@ const LoadingScreen = ({onDismiss, showButton}) => {
                 style={{
                     backgroundColor: "#fff",
                     height: "min-content",
-                    marginTop: -64,
+                    marginTop: -74,
                     padding: "0px 10px",
                     borderRadius: 16,
                 }}
@@ -27,8 +27,6 @@ const LoadingScreen = ({onDismiss, showButton}) => {
                     className="loading-video"
                 ></video>
             </div>
-
-            <p className="loading-text">Cadabruh is cooking.....</p>
 
             {/* Fade-in Button */}
             <div style={{height: 62, width: "100%", textAlign:"center"}}>
@@ -51,7 +49,7 @@ const LoadingScreen = ({onDismiss, showButton}) => {
 };
 
 const Page = () => {
-    const [loading, setLoading] = useState(false); // Loading screen state
+    const [loading, setLoading] = useState(true); // Loading screen state
     const [iframeLoaded, setIframeLoaded] = useState(false); // Iframe loaded state
     const [showButton, setShowButton] = useState(false); // Button state
 
@@ -85,12 +83,12 @@ const Page = () => {
     return (
         <div className="wrapper">
             {/* Show loading screen with button logic */}
-            {/*loading && (
+            {loading && (
                 <LoadingScreen
                     onDismiss={handleDismissLoading}
                     showButton={showButton}
                 />
-            )*/}
+            )}
 
             {/* Main page content */}
             {!loading && (
