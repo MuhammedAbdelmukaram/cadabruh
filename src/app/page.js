@@ -9,7 +9,7 @@ const LoadingScreen = () => {
     return (
         <div className="loading-screen">
             <div className="spinner"></div>
-            <p className="loading-text">Loading, please wait...</p>
+            <p className="loading-text">Cadabruh is cooking.....</p>
         </div>
     );
 };
