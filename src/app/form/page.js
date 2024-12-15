@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Header from "@/app/components/Header";
+import QuoteAndOrderDetails from "@/app/components/QuoteAndOrderDetails";
 
 const FormPage = () => {
     const [assets, setAssets] = useState({});
@@ -14,6 +15,9 @@ const FormPage = () => {
     const [receivingWallet, setReceivingWallet] = useState("");
     const [quote, setQuote] = useState(null);
     const [order, setOrder] = useState(null);
+
+    // Auto-calculate conversion
+    const conversion = amount && pairInfo?.rate ? (parseFloat(amount) * pairInfo.rate).toFixed(6) : null;
 
     // Fetch assets
     useEffect(() => {
@@ -42,18 +46,30 @@ const FormPage = () => {
                 const response = await fetch(
                     `/api/pairs/${selectedFrom.toLowerCase()}/${selectedTo.toLowerCase()}`
                 );
-                if (!response.ok) throw new Error("Failed to fetch pair details");
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    // Extract "message" from the response
+                    const rawError = errorData.error; // e.g., "External API Error: {...}"
+                    const messageMatch = rawError.match(/"message":"(.*?)"/); // Extract "message"
+                    const errorMessage = messageMatch ? messageMatch[1] : "An unknown error occurred.";
+                    throw new Error(errorMessage);
+                }
+
                 const data = await response.json();
                 setPairInfo(data);
-                setPairError("");
+                setPairError(""); // Clear any previous error
             } catch (err) {
                 setPairInfo(null);
-                setPairError(err.message);
+                setPairError(err.message); // Set the extracted error message
             }
         };
 
         fetchPairInfo();
     }, [selectedFrom, selectedTo]);
+
+
+
 
     // Combined Generate Quote and Create Order
     const handleGenerateQuoteAndOrder = async () => {
@@ -69,24 +85,12 @@ const FormPage = () => {
                 body: JSON.stringify({
                     depositMethod: selectedFrom,
                     settleMethod: selectedTo,
-                    depositAmount: parseFloat(amount), // NEW: Use user input
+                    depositAmount: parseFloat(amount),
                 }),
             });
 
-            if (!quoteResponse.ok) {
-                const errorText = await quoteResponse.text();
-                console.error("Quote API Error Response:", errorText);
-                throw new Error("Failed to generate quote");
-            }
-
+            if (!quoteResponse.ok) throw new Error("Failed to generate quote");
             const quoteData = await quoteResponse.json();
-            console.log("Generated Quote Response:", quoteData);
-
-            if (!quoteData.id) {
-                console.error("Missing Quote ID in Response:", quoteData);
-                throw new Error("Quote ID is missing or invalid");
-            }
-
             setQuote(quoteData);
 
             const orderPayload = {
@@ -97,44 +101,38 @@ const FormPage = () => {
                 referrer: "QO264G",
             };
 
-            console.log("Creating order with payload:", JSON.stringify(orderPayload, null, 2));
-
             const orderResponse = await fetch("/api/orders", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(orderPayload),
             });
 
-            if (!orderResponse.ok) {
-                const errorText = await orderResponse.text();
-                console.error("Order API Error Response:", errorText);
-                throw new Error("Failed to create order");
-            }
-
+            if (!orderResponse.ok) throw new Error("Failed to create order");
             const orderData = await orderResponse.json();
-            console.log("Order Created Successfully:", orderData);
-
             setOrder(orderData);
         } catch (err) {
-            console.error("Error in Quote or Order:", err.message);
+            console.error(err.message);
         }
     };
 
     // Dropdown rendering
     const renderDropdown = (selectedValue, setSelectedValue) => (
-        <select
-            className="dropdown"
-            value={selectedValue}
-            onChange={(e) => setSelectedValue(e.target.value.toLowerCase())}
-        >
-            <option value="" disabled>Select Asset</option>
-            {Object.entries(assets).map(([key, asset]) => (
-                <option key={key} value={key.toLowerCase()}>
-                    {asset.name} ({asset.id})
-                </option>
-            ))}
-        </select>
+        <div className="dropdown-wrapper">
+            <select
+                className="form__select"
+                value={selectedValue}
+                onChange={(e) => setSelectedValue(e.target.value.toLowerCase())}
+            >
+                <option value="" disabled>Select Asset</option>
+                {Object.entries(assets).map(([key, asset]) => (
+                    <option key={key} value={key.toLowerCase()}>
+                        {asset.name} ({asset.id})
+                    </option>
+                ))}
+            </select>
+        </div>
     );
+
 
     return (
         <div className="wrapper">
@@ -142,84 +140,97 @@ const FormPage = () => {
             <main className="page">
                 <section className="page__hero hero">
                     <div className="hero__container">
-                        <h1 className="hero__title">Transact Freely</h1>
-                        <p>Cadabruh, making your on-chain swaps quick and anonymous</p>
+                        <div className="hero__top">
+                            <h1 className="hero__title">Transact Freely</h1>
+                            <div className="hero__text">
+                                <p>Cadabruh, making your on-chain swaps quick and anonymous</p>
+                            </div>
+                        </div>
 
                         {loading ? (
                             <p>Loading assets...</p>
                         ) : error ? (
-                            <p style={{ color: "red" }}>Error: {error}</p>
+                            <p className="error">{error}</p>
                         ) : (
-                            <>
+                            <form className="hero__form form">
                                 <div className="form__wrapper">
-                                    <div className="form__input">
-                                        <label>From</label>
-                                        {renderDropdown(selectedFrom, setSelectedFrom)}
+                                    {/* From Dropdown */}
+                                    <div className="form__input-wrapper">
+                                        <div className="form__input-label">
+                                            <span className="form__input-label">From</span>
+                                        </div>
+
+                                        <div style={{ display: "flex", gap: "10px" }}>
+                                            <input
+                                                type="number"
+                                                placeholder="Enter amount"
+                                                value={amount}
+                                                onChange={(e) => setAmount(e.target.value)}
+                                                className="form__input"
+                                            />
+
+                                            {renderDropdown(selectedFrom, setSelectedFrom)}
+                                        </div>
                                     </div>
-                                    <div className="form__input">
-                                        <label>To</label>
-                                        {renderDropdown(selectedTo, setSelectedTo)}
+
+                                    {/* To Dropdown */}
+                                    <div className="form__input-wrapper">
+                                        <div className="form__input-label">
+                                            <span className="form__input-label">To</span>
+                                        </div>
+
+                                        <div style={{ display: "flex", gap: "10px" }}>
+                                            <input
+                                                type="number"
+                                                placeholder="You get"
+                                                value={conversion || ""}
+                                                className="form__input"
+                                                readOnly
+                                            />
+
+
+                                            {renderDropdown(selectedTo, setSelectedTo)}
+                                        </div>
                                     </div>
-                                    <div className="form__input">
-                                        <label>Amount</label>
-                                        <input
-                                            type="number"
-                                            placeholder="Enter amount"
-                                            value={amount}
-                                            onChange={(e) => setAmount(e.target.value)}
-                                            className="dropdown"
-                                        />
-                                    </div>
-                                    <div className="form__input">
-                                        <label>Receiving Wallet Address</label>
+
+
+
+                                    {/* Receiving Wallet */}
+                                    <div className="form__input-wrapper form__input-wrapper--last">
+                                        <div className="form__input-label">
+                                            <span className="form__input-label">Receiving Wallet Address</span>
+                                        </div>
                                         <input
                                             type="text"
                                             placeholder="Enter receiving wallet address"
                                             value={receivingWallet}
                                             onChange={(e) => setReceivingWallet(e.target.value)}
-                                            className="dropdown"
+                                            className="form__input"
                                         />
                                     </div>
+                                    {pairError && <p style={{color:"#b61414", textAlign:"center", marginBottom:10}}>Pair {pairError}</p>}
+
+                                    <button
+                                        className="form__button"
+                                        onClick={handleGenerateQuoteAndOrder}
+                                        type="button"
+                                        disabled={!selectedFrom || !selectedTo || !receivingWallet || !amount}
+                                    >
+                                        <span>Find the best route</span>
+                                    </button>
+
                                 </div>
 
-                                {pairError ? (
-                                    <p style={{ color: "red" }}>Error: {pairError}</p>
-                                ) : (
-                                    pairInfo && (
-                                        <div className="pair-details">
-                                            <h3>Pair Information</h3>
-                                            <p>Rate: <strong>{pairInfo.rate}</strong></p>
-                                            <p>Min: <strong>{pairInfo.min}</strong></p>
-                                            <p>Max: <strong>{pairInfo.max}</strong></p>
-                                        </div>
-                                    )
-                                )}
 
-                                <button
-                                    className="action-button"
-                                    onClick={handleGenerateQuoteAndOrder}
-                                    disabled={!selectedFrom || !selectedTo || !receivingWallet || !amount}
-                                >
-                                    Generate Quote & Create Order
-                                </button>
 
-                                {quote && (
-                                    <div className="quote-details">
-                                        <h3>Quote Details</h3>
-                                        <p>Rate: {quote.rate}</p>
-                                        <p>Expires At: {quote.expiresAt}</p>
-                                    </div>
-                                )}
 
-                                {order && (
-                                    <div className="order-details">
-                                        <h3>Order Created</h3>
-                                        <p>Send {order.depositAmount} {order.depositMethod} to:</p>
-                                        <strong>{order.depositData.address}</strong>
-                                    </div>
-                                )}
-                            </>
+
+
+                            </form>
                         )}
+                        <QuoteAndOrderDetails quote={quote} order={order} />
+
+
                     </div>
                 </section>
             </main>
