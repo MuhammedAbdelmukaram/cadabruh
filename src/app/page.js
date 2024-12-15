@@ -1,7 +1,7 @@
 import React from 'react';
 import CursorEffect from "@/app/components/CursorEffect";
 import Header from "@/app/components/Header";
-import styles from "./Page.module.css";
+import styles from "./page.module.css";
 
 const Page = () => {
     return (
