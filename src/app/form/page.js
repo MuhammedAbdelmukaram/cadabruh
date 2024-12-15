@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Header from "@/app/components/header";
+import Header from "@/app/components/Header";
 
 const FormPage = () => {
     const [assets, setAssets] = useState({});
