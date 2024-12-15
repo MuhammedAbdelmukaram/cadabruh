@@ -51,7 +51,7 @@ const LoadingScreen = ({onDismiss, showButton}) => {
 };
 
 const Page = () => {
-    const [loading, setLoading] = useState(true); // Loading screen state
+    const [loading, setLoading] = useState(false); // Loading screen state
     const [iframeLoaded, setIframeLoaded] = useState(false); // Iframe loaded state
     const [showButton, setShowButton] = useState(false); // Button state
 
@@ -85,12 +85,12 @@ const Page = () => {
     return (
         <div className="wrapper">
             {/* Show loading screen with button logic */}
-            {loading && (
+            {/*loading && (
                 <LoadingScreen
                     onDismiss={handleDismissLoading}
                     showButton={showButton}
                 />
-            )}
+            )*/}
 
             {/* Main page content */}
             {!loading && (
