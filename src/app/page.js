@@ -9,7 +9,7 @@ import {motion} from "framer-motion";
 // Loading screen component
 const LoadingScreen = ({onDismiss, showButton}) => {
     return (
-        <div className="loading-screen">
+        <div className="loading-screen" onClick={onDismiss}>
             <div
                 style={{
                     backgroundColor: "#fff",
@@ -118,6 +118,13 @@ const Page = () => {
                                         className={styles.iframe}
                                     ></iframe>
                                 </div>
+
+                                <div>
+
+                                    <p style={{color:"#fff", marginTop:20, fontSize:12, textAlign:"center"}}>
+                                        Pepe took a break from memes and spent a term at Hogwarts. Now he’s back with a cauldron full of <a href="https://cadabruh.gitbook.io/cadabruh-docs" target="_blank" style={{fontWeight:"bold"}}> blockchain privacy magic.</a>
+                                    </p>
+                                </div>
                             </div>
                         </section>
                     </main>
@@ -125,7 +132,7 @@ const Page = () => {
             )}
 
 
-            <CursorEffect/>
+
         </div>
     );
 };

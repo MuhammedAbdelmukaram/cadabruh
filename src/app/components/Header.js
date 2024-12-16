@@ -8,10 +8,10 @@ const Header = () => (
                 <Image src="/logo.svg" alt="Website logo" width={100} height={40} />
             </Link>
             <nav className="menu__body">
-                <form action="#" className="menu__form">
+                {/*<form action="#" className="menu__form">
                     <div className="menu__input-wrapper">
-                        <input type="text" name="search" placeholder="Search a TX" className="menu__input" />
-                        {/* Search Icon */}
+                        <input type="text" name="search" placeholder="Search a TX" className="menu__input"/>
+
                         <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
                             <g opacity="0.5">
                                 <path
@@ -21,7 +21,7 @@ const Header = () => (
                             </g>
                         </svg>
                     </div>
-                </form>
+                </form>*/}
                 <ul className="menu__list">
                     <li className="menu__item">
                         <Link href="how-it-works" className="menu__link">
