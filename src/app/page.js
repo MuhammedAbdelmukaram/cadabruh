@@ -116,6 +116,7 @@ const Page = () => {
                                     <iframe
                                         src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=true"
                                         className={styles.iframe}
+
                                     ></iframe>
                                 </div>
 
@@ -128,6 +129,7 @@ const Page = () => {
                             </div>
                         </section>
                     </main>
+                    <CursorEffect/>
                 </motion.div>
             )}
 
