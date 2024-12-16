@@ -48,19 +48,19 @@ const Header = () => (
                             </svg>
                         </Link>
 
-                        <Link
-                            href="https://docs.cadabruh.com"
-                            className="menu__link"
-                            aria-label="GitBook Documentation"
-                        >
-                            <Image
-                                src="/gitbook.svg" // Path to your image in the public folder
-                                alt="GitBook Logo"
-                                width={28} // Adjust size as needed
-                                height={28}
-                                style={{ marginTop: "2px" }} // Optional vertical alignment tweak
-                            />
-                        </Link>
+                        {/*<Link*/}
+                        {/*    href="https://docs.cadabruh.com"*/}
+                        {/*    className="menu__link"*/}
+                        {/*    aria-label="GitBook Documentation"*/}
+                        {/*>*/}
+                        {/*    <Image*/}
+                        {/*        src="/gitbook.svg" // Path to your image in the public folder*/}
+                        {/*        alt="GitBook Logo"*/}
+                        {/*        width={28} // Adjust size as needed*/}
+                        {/*        height={28}*/}
+                        {/*        style={{ marginTop: "2px" }} // Optional vertical alignment tweak*/}
+                        {/*    />*/}
+                        {/*</Link>*/}
 
 
                     </li>
