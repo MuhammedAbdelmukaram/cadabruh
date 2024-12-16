@@ -1117,7 +1117,7 @@ h1,h2,h3,h4,h5,h6 {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background: linear-gradient(135deg, #0b0c11, #0f1b37);
   color: #fff;

@@ -14,7 +14,7 @@ const LoadingScreen = ({onDismiss, showButton}) => {
                 style={{
                     backgroundColor: "#fff",
                     height: "min-content",
-                    marginTop: -74,
+                    marginTop: 20,
                     padding: "0px 10px",
                     borderRadius: 16,
                 }}
