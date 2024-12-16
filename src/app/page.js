@@ -114,7 +114,7 @@ const Page = () => {
                                 {/* Responsive iframe wrapper */}
                                 <div className={styles.iframeWrapper}>
                                     <iframe
-                                        src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=true"
+                                        src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=false"
                                         className={styles.iframe}
                                         allow="clipboard-write"
                                         onLoad={handleIframeLoad} // Set iframe loaded
