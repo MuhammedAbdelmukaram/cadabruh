@@ -114,7 +114,7 @@ const Page = () => {
                                 {/* Responsive iframe wrapper */}
                                 <div className={styles.iframeWrapper}>
                                     <iframe
-                                        src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL"
+                                        src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=true"
                                         className={styles.iframe}
                                         allow="clipboard-write"
                                         onLoad={handleIframeLoad} // Set iframe loaded
@@ -125,6 +125,7 @@ const Page = () => {
                     </main>
                 </motion.div>
             )}
+
 
             <CursorEffect/>
         </div>
