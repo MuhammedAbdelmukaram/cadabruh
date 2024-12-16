@@ -116,8 +116,6 @@ const Page = () => {
                                     <iframe
                                         src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=true"
                                         className={styles.iframe}
-                                        allow="clipboard-write"
-                                        onLoad={handleIframeLoad} // Set iframe loaded
                                     ></iframe>
                                 </div>
                             </div>
