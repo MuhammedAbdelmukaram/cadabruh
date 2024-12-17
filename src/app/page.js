@@ -22,9 +22,15 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
                 flexDirection: "column",
             }}
         >
+            <div style={{
+                background: "url(/main-bg.png)",
+                zIndex:2,
+            }}>
+
+            </div>
             <div
                 style={{
-                    backgroundColor: "#fff",
+                    backgroundColor: "transparent",
                     height: "min-content",
                     marginTop: 20,
                     padding: "0px 10px",
@@ -32,7 +38,7 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
                 }}
             >
                 <video
-                    src="/cooker.mp4"
+                    src="/Mp4.mp4"
                     autoPlay
                     loop
                     muted
