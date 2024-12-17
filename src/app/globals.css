@@ -1104,7 +1104,7 @@ h1,h2,h3,h4,h5,h6 {
   width: 280px;
   height: auto;
   border-radius: 15px; /* Optional: Adds rounded corners to the video */
-
+  background-color: transparent;
 }
 
 
@@ -1120,7 +1120,11 @@ h1,h2,h3,h4,h5,h6 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: url(/main-bg.png);
+  background-color: #141116;
+  background: url(/bck.png);
+  background-repeat: no-repeat;       /* Prevent image from repeating */
+  background-position: center bottom; /* Centered horizontally, bottom vertically */
+  background-size: contain;
   color: #fff;
   font-family: "Poppins", sans-serif;
   z-index: 9999;
@@ -1357,23 +1361,78 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.header__logo img {
+  display: block;
+}
+
+/* Hamburger Button */
+.header__menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navigation Menu */
+.menu__body {
+  display: flex;
+  gap: 20px;
+}
+
+.menu__list {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.menu__body--open {
+  display: block; /* Display menu when button is clicked */
+}
+
 @media (max-width: 61.99875em) {
+  .header__menu-toggle {
+    display: block; /* Show hamburger button */
+    position: fixed;
+    right: 30px;
+  }
+
   .menu__body {
-    position:fixed;
+    display: none; /* Hide menu by default on mobile */
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #0a0d12eb;
     width: 100%;
-    height: 100%;
-    right: -100%;
-    top: 0;
-    overflow: auto;
-    padding-left: .9375rem;
-    padding-right: .9375rem;
-    padding-bottom: 1.875rem;
-    padding-top: 5.625rem;
-    transition: right .3s;
     flex-direction: column;
-    justify-content: center;
-    row-gap: 1.875rem;
-    background: var(--private-gradient)
+    text-align: center;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .menu__body--open {
+    display: flex; /* Show menu when open */
   }
 
   .menu-open .menu__body {
@@ -1568,17 +1627,18 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 
+
 @media (any-hover: hover) {
   .menu__form:hover .menu__input-wrapper {
     width:15rem
   }
 
   .menu__link:hover {
-    color: #d09150
+    color: #16e0ee
   }
 
   .menu__link:hover svg {
-    fill: #d09150
+    fill: #16e0ee
   }
 
   .menu__item:hover .sub-menu {

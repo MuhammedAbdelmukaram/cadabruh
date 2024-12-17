@@ -9,40 +9,43 @@ import {motion} from "framer-motion";
 // Loading screen component
 const LoadingScreen = ({onDismiss, showButton}) => {
     return (
-        <div className="loading-screen" onClick={onDismiss}>
-            <div
-                style={{
-                    backgroundColor: "#fff",
-                    height: "min-content",
-                    marginTop: 20,
-                    padding: "0px 10px",
-                    borderRadius: 16,
-                }}
-            >
-                <video
-                    src="/cooker.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    className="loading-video"
-                ></video>
-            </div>
+        <div style={{backgroundColor:"#141116", minHeight:"100vh", minWidth:"100vh"}}>
+            <div className="loading-screen" onClick={onDismiss}>
+                <div
+                    style={{
+                        backgroundColor: "#fff",
+                        height: "min-content",
+                        marginTop: 20,
+                        padding: "0px 10px",
+                        borderRadius: 16,
+                    }}
+                >
+                    <video
+                        src="/cooker.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        className="loading-video"
+                    ></video>
+                </div>
 
-            {/* Fade-in Button */}
-            <div style={{height: 62, width: "100%", textAlign:"center"}}>
-                {showButton && (
+                {/* Fade-in Button */}
+                <div style={{height: 62, width: "100%", textAlign: "center"}}>
+                    {showButton && (
 
-                    <motion.button
-                        className="loading-button"
-                        onClick={onDismiss}
-                        initial={{opacity: 0}}      // Start invisible
-                        animate={{opacity: 1}}      // Fade to visible
-                        transition={{duration: 3}}  // Slow fade-in (3 seconds)
-                    >
-                        Enter the potion room
-                    </motion.button>
+                        <motion.button
+                            className="loading-button"
+                            onClick={onDismiss}
+                            initial={{opacity: 0}}      // Start invisible
+                            animate={{opacity: 1}}      // Fade to visible
+                            transition={{duration: 3}}  // Slow fade-in (3 seconds)
+                        >
+                            Enter the potion room
+                        </motion.button>
 
-                )}
+                    )}
+                </div>
+                <CursorEffect/>
             </div>
         </div>
     );
@@ -122,8 +125,11 @@ const Page = () => {
 
                                 <div>
 
-                                    <p style={{color:"#fff", marginTop:20, fontSize:12, textAlign:"center"}}>
-                                        Pepe took a break from memes and spent a term at Hogwarts. Now he’s back with a cauldron full of <a href="https://cadabruh.gitbook.io/cadabruh-docs" target="_blank" style={{fontWeight:"bold"}}> blockchain privacy magic.</a>
+                                    <p style={{color: "#fff", marginTop: 20, fontSize: 12, textAlign: "center"}}>
+                                        Pepe took a break from memes and spent a term at Hogwarts. Now he’s back with a
+                                        cauldron full of <a href="https://cadabruh.gitbook.io/cadabruh-docs"
+                                                            target="_blank" style={{fontWeight: "bold"}}> blockchain
+                                        privacy magic.</a>
                                     </p>
                                 </div>
                             </div>
@@ -132,7 +138,6 @@ const Page = () => {
                     <CursorEffect/>
                 </motion.div>
             )}
-
 
 
         </div>
