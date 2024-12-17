@@ -5,7 +5,7 @@ const Header = () => (
     <header className="header">
         <div className="header__container">
             <Link href="/" aria-label="Go to main section" className="header__logo">
-                <Image src="/logo.png" alt="Website logo" width={300} height={120} />
+                <Image src="/logo2.png" alt="Website logo" width={300} height={120} />
             </Link>
             <nav className="menu__body">
                 {/*<form action="#" className="menu__form">
