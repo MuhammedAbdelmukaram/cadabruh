@@ -15,19 +15,19 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
             transition={{ duration: 1.5 }} // Animation duration
             onClick={onDismiss}
             style={{
-                backgroundColor: "#141116",
+                backgroundColor: "#0a0a12",
                 minHeight: "100vh",
                 display: "flex",
                 justifyContent: "flex-start",
                 alignItems: "center",
                 flexDirection: "column",
                 cursor:"pointer",
+                position:"relative",
             }}
         >
-            <div style={{
-                background: "url(/main-bg.png)",
-                zIndex:2,
-            }}>
+            <div
+                className="background-div"
+                >
 
             </div>
             <div
@@ -37,10 +37,11 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
                     marginTop: 20,
                     padding: "0px 10px",
                     borderRadius: 16,
+                    zIndex:3
                 }}
             >
                 <video
-                    src="/Mp4.mp4"
+                    src="/Mp44.mp4"
                     autoPlay
                     loop
                     muted

@@ -1152,6 +1152,8 @@ h1,h2,h3,h4,h5,h6 {
 
 .loading-button{
   color: #ffffff;
+  position: sticky;
+  z-index: 4;
   background-color: #7007f1;
   min-width: 280px;
   margin-top: 24px;
@@ -1170,6 +1172,50 @@ h1,h2,h3,h4,h5,h6 {
 .loading-button:active {
   transform: scale(0.98); /* Slightly smaller when clicked */
   box-shadow: 0px 4px 8px rgba(241, 69, 7, 0.3); /* Softer shadow */
+}
+
+
+.background-div {
+  background: url(/bck.png);
+  z-index: 1;
+  position: absolute;
+  min-height: 46vh; /* Default for larger viewports */
+  width: 58vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  bottom: 0;
+
+}
+@media (max-width: 1440px) {
+  .background-div {
+    background: url(/bck.png);
+    z-index: 1;
+    position: absolute;
+    width: 93vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    bottom: 0;
+    height: 40vh; /* Smaller height for mobile */
+  }
+}
+
+
+/* Mobile Viewport Styles */
+@media (max-width: 1010px) {
+
+  .background-div {
+    background: url(/bck.png);
+    z-index: 1;
+    position: absolute;
+    width: 150vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    bottom: 0;
+    height: 40vh; /* Smaller height for mobile */
+  }
 }
 
 /* Media Query for Small Heights */
