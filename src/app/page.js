@@ -60,7 +60,7 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
                         onClick={onDismiss}
                         initial={{opacity: 0}}      // Start invisible
                         animate={{opacity: 1}}      // Fade to visible
-                        transition={{duration: 3}}  // Slow fade-in (3 seconds)
+                        transition={{duration: 2}}  // Slow fade-in (3 seconds)
                     >
                         Enter the potion room
                     </motion.button>
