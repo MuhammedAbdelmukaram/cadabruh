@@ -1414,7 +1414,7 @@ h1,h2,h3,h4,h5,h6 {
 @media (max-width: 61.99875em) {
   .header__menu-toggle {
     display: block; /* Show hamburger button */
-    position: fixed;
+    position: absolute;
     right: 30px;
   }
 
@@ -1532,7 +1532,8 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   .header__container {
-    justify-content: center
+    justify-content: center;
+    position:relative;
   }
 
   .hero {

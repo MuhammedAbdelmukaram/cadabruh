@@ -1,53 +1,63 @@
 "use client";
 
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import CursorEffect from "@/app/components/CursorEffect";
 import Header from "@/app/components/Header";
 import styles from "./page.module.css";
-import {motion} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Loading screen component
-const LoadingScreen = ({onDismiss, showButton}) => {
+const LoadingScreen = ({ onDismiss, showButton }) => {
     return (
-        <div style={{backgroundColor:"#141116", minHeight:"100vh", minWidth:"100vh"}}>
-            <div className="loading-screen" onClick={onDismiss}>
-                <div
-                    style={{
-                        backgroundColor: "#fff",
-                        height: "min-content",
-                        marginTop: 20,
-                        padding: "0px 10px",
-                        borderRadius: 16,
-                    }}
-                >
-                    <video
-                        src="/cooker.mp4"
-                        autoPlay
-                        loop
-                        muted
-                        className="loading-video"
-                    ></video>
-                </div>
-
-                {/* Fade-in Button */}
-                <div style={{height: 62, width: "100%", textAlign: "center"}}>
-                    {showButton && (
-
-                        <motion.button
-                            className="loading-button"
-                            onClick={onDismiss}
-                            initial={{opacity: 0}}      // Start invisible
-                            animate={{opacity: 1}}      // Fade to visible
-                            transition={{duration: 3}}  // Slow fade-in (3 seconds)
-                        >
-                            Enter the potion room
-                        </motion.button>
-
-                    )}
-                </div>
-                <CursorEffect/>
+        <motion.div
+            initial={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }} // Exit animation: fade-out and scale-up
+            transition={{ duration: 1.5 }} // Animation duration
+            style={{
+                backgroundColor: "#141116",
+                minHeight: "100vh",
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                flexDirection: "column",
+            }}
+        >
+            <div
+                style={{
+                    backgroundColor: "#fff",
+                    height: "min-content",
+                    marginTop: 20,
+                    padding: "0px 10px",
+                    borderRadius: 16,
+                }}
+            >
+                <video
+                    src="/cooker.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    className="loading-video"
+                ></video>
             </div>
-        </div>
+
+            {/* Fade-in Button */}
+            <div style={{height: 62, width: "100%", textAlign: "center"}}>
+                {showButton && (
+
+                    <motion.button
+                        className="loading-button"
+                        onClick={onDismiss}
+                        initial={{opacity: 0}}      // Start invisible
+                        animate={{opacity: 1}}      // Fade to visible
+                        transition={{duration: 3}}  // Slow fade-in (3 seconds)
+                    >
+                        Enter the potion room
+                    </motion.button>
+
+                )}
+            </div>
+            <CursorEffect />
+        </motion.div>
     );
 };
 
@@ -64,11 +74,10 @@ const Page = () => {
     // Simulate additional 3-second delay for the button to appear
     useEffect(() => {
         const fallbackTimer = setTimeout(() => {
-            setShowButton(true); // Fallback to show the button after 5 seconds
+            setShowButton(true); // Show the button after fallback delay
         }, 1000);
 
         if (iframeLoaded) {
-            // Once iframe loads, wait an additional 3 seconds
             clearTimeout(fallbackTimer);
             const delayTimer = setTimeout(() => {
                 setShowButton(true);
@@ -85,33 +94,31 @@ const Page = () => {
 
     return (
         <div className="wrapper">
-            {/* Show loading screen with button logic */}
-            {loading && (
-                <LoadingScreen
-                    onDismiss={handleDismissLoading}
-                    showButton={showButton}
-                />
-            )}
+            {/* AnimatePresence for exit animations */}
+            <AnimatePresence>
+                {loading && (
+                    <LoadingScreen
+                        onDismiss={handleDismissLoading}
+                        showButton={showButton}
+                    />
+                )}
+            </AnimatePresence>
 
             {/* Main page content */}
             {!loading && (
                 <motion.div
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
-                    transition={{duration: 2.3}}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 2.3 }}
                 >
-                    <Header/>
+                    <Header />
                     <main className="page">
                         <section className="page__hero hero">
                             <div className="hero__container">
                                 <div className="hero__top">
                                     <h1 className="hero__title">Transact Freely</h1>
                                     <div className="hero__text">
-                                        <p>
-                                            Cadabruh, making your on-chain swaps quick and
-                                            anonymous
-                                        </p>
+                                        <p>Cadabruh, making your on-chain swaps quick and anonymous</p>
                                     </div>
                                 </div>
                                 {/* Responsive iframe wrapper */}
@@ -119,27 +126,33 @@ const Page = () => {
                                     <iframe
                                         src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=true"
                                         className={styles.iframe}
-
+                                        onLoad={handleIframeLoad}
                                     ></iframe>
                                 </div>
-
-                                <div>
-
-                                    <p style={{color: "#fff", marginTop: 20, fontSize: 12, textAlign: "center"}}>
-                                        Pepe took a break from memes and spent a term at Hogwarts. Now he’s back with a
-                                        cauldron full of <a href="https://cadabruh.gitbook.io/cadabruh-docs"
-                                                            target="_blank" style={{fontWeight: "bold"}}> blockchain
-                                        privacy magic.</a>
-                                    </p>
-                                </div>
+                                <p
+                                    style={{
+                                        color: "#fff",
+                                        marginTop: 20,
+                                        fontSize: 12,
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    Pepe took a break from memes and spent a term at Hogwarts. Now
+                                    he’s back with a cauldron full of{" "}
+                                    <a
+                                        href="https://cadabruh.gitbook.io/cadabruh-docs"
+                                        target="_blank"
+                                        style={{ fontWeight: "bold" }}
+                                    >
+                                        blockchain privacy magic.
+                                    </a>
+                                </p>
                             </div>
                         </section>
                     </main>
-                    <CursorEffect/>
+                    <CursorEffect />
                 </motion.div>
             )}
-
-
         </div>
     );
 };
