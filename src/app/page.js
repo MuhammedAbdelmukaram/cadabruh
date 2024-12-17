@@ -43,6 +43,8 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
                 <video
                     src="/Mp44.mp4"
                     autoPlay
+                    playsInline
+                    preload="auto"
                     loop
                     muted
                     className="loading-video"
