@@ -1121,7 +1121,7 @@ h1,h2,h3,h4,h5,h6 {
   justify-content: flex-start;
   align-items: center;
   background-color: #141116;
-  background: url(/backgroundA-png);
+  background: url(/backgroundA.png);
   background-repeat: no-repeat;       /* Prevent image from repeating */
   background-position: center bottom; /* Centered horizontally, bottom vertically */
   background-size: contain;
@@ -1176,7 +1176,7 @@ h1,h2,h3,h4,h5,h6 {
 
 
 .background-div {
-  background: url(/backgroundA-png);
+  background: url(/backgroundA.png);
   z-index: 1;
   position: absolute;
   min-height: 46vh; /* Default for larger viewports */
@@ -1189,7 +1189,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 @media (max-width: 1440px) {
   .background-div {
-    background: url(/backgroundA-png);
+    background: url(/backgroundA.png);
     z-index: 1;
     position: absolute;
     width: 93vw;
@@ -1206,7 +1206,7 @@ h1,h2,h3,h4,h5,h6 {
 @media (max-width: 1010px) {
 
   .background-div {
-    background: url(/backgroundA-png);
+    background: url(/backgroundA.png);
     z-index: 1;
     position: absolute;
     width: 150vw;
