@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "@/app/components/Header";
+import CursorEffect from "@/app/components/CursorEffect";
 
 const FAQPage = () => {
     return (
@@ -10,7 +11,7 @@ const FAQPage = () => {
                 color: "#FFFFFF",
                 lineHeight: "1.6",
                 padding: "20px",
-                background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
+                background: "url(/main-bg.png)",
                 minHeight: "100vh",
             }}
         >
@@ -18,7 +19,7 @@ const FAQPage = () => {
             <Header />
 
             <header style={{ textAlign: "center", marginBottom: "40px", marginTop: "100px" }}>
-                <h1 style={{ fontSize: "2.5rem", margin: "10px 0", color: "#FF7F50" }}>
+                <h1 style={{ fontSize: "2.5rem", margin: "10px 0", color: "#6c62f8" }}>
                     Frequently Asked Questions
                 </h1>
                 <p style={{ fontSize: "1.2rem", color: "#E0E0E0" }}>
@@ -48,13 +49,13 @@ const FAQPage = () => {
                         cursor: "pointer",
                     }}
                 >
-                    <h2 style={{ fontSize: "1.5rem", color: "#FF7F50", marginBottom: "10px" }}>
+                    <h2 style={{ fontSize: "1.5rem", color: "#6c62f8", marginBottom: "10px" }}>
                         ▪️ How Does Cadabruh Work?
                     </h2>
                     <p style={{ fontSize: "1rem", margin: "0", color: "#DDDDDD" }}>
                         Cadabruh allows you to send, swap, or bridge over 4000 tokens seamlessly. You can choose between{" "}
-                        <strong style={{ color: "#FFB74D" }}>Standard</strong> mode for regular swaps or{" "}
-                        <strong style={{ color: "#FFB74D" }}>Private</strong> mode for more anonymous transactions. Cadabruh compares rates and optimizes the transaction route for the lowest fees and fastest speed.
+                        <strong style={{ color: "#16e0ee" }}>Standard</strong> mode for regular swaps or{" "}
+                        <strong style={{ color: "#16e0ee" }}>Private</strong> mode for more anonymous transactions. Cadabruh compares rates and optimizes the transaction route for the lowest fees and fastest speed.
                     </p>
                 </div>
 
@@ -69,7 +70,7 @@ const FAQPage = () => {
                         cursor: "pointer",
                     }}
                 >
-                    <h2 style={{ fontSize: "1.5rem", color: "#FF7F50", marginBottom: "10px" }}>
+                    <h2 style={{ fontSize: "1.5rem", color: "#6c62f8", marginBottom: "10px" }}>
                         ▪️ Why Trust Us?
                     </h2>
                     <p style={{ fontSize: "1rem", margin: "0", color: "#DDDDDD" }}>
@@ -88,16 +89,16 @@ const FAQPage = () => {
                         cursor: "pointer",
                     }}
                    >
-                    <h2 style={{ fontSize: "1.5rem", color: "#FF7F50", marginBottom: "10px" }}>
+                    <h2 style={{ fontSize: "1.5rem", color: "#6c62f8", marginBottom: "10px" }}>
                         ▪️ Do I Have to Connect My Wallet?
                     </h2>
                     <p style={{ fontSize: "1rem", margin: "0", color: "#DDDDDD" }}>
                         No, you do not have to connect your wallet. Cadabruh allows for{" "}
-                        <strong style={{ color: "#FFB74D" }}>no-wallet connect</strong> transactions, enabling you to send funds manually to a generated address. For users who prefer convenience, connecting a wallet streamlines the process.
+                        <strong style={{ color: "#16e0ee" }}>no-wallet connect</strong> transactions, enabling you to send funds manually to a generated address. For users who prefer convenience, connecting a wallet streamlines the process.
                     </p>
                 </div>
             </main>
-
+            <CursorEffect/>
             {/* Footer */}
             <footer style={{ textAlign: "center", marginTop: "50px", fontSize: "0.9rem", color: "#AAAAAA" }}>
                 <p>&copy; {new Date().getFullYear()} Cadabruh. All rights reserved.</p>

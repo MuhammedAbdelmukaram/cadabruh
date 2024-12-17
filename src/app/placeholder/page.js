@@ -136,7 +136,7 @@ const FormPage = () => {
                     fontFamily: "'Outfit', sans-serif",
                     color: "#ffffff",
                     background: "linear-gradient(135deg, #2e2a4e, #1e1b3e)",
-                    border: "2px solid #ff7f50",
+                    border: "2px solid #6c62f8",
                     borderRadius: "8px",
                     appearance: "none",
                     outline: "none",

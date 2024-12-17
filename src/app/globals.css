@@ -1074,7 +1074,7 @@ h1,h2,h3,h4,h5,h6 {
 .order-details__address {
   font-size: 1rem;
   font-weight: bold;
-  color: #ff7f50; /* Highlight color for address */
+  color: #6c62f8; /* Highlight color for address */
   word-break: break-all; /* Prevent overflow */
 }
 
@@ -1090,7 +1090,7 @@ h1,h2,h3,h4,h5,h6 {
 .order-details__address {
   font-size: 1rem;
   font-weight: bold;
-  color: #ff7f50; /* Highlight color */
+  color: #6c62f8; /* Highlight color */
   word-break: break-all; /* Prevent overflow */
   cursor: pointer; /* Pointer cursor for interaction */
   transition: color 0.3s ease; /* Smooth hover effect */
@@ -1130,7 +1130,7 @@ h1,h2,h3,h4,h5,h6 {
   width: 50px;
   height: 50px;
   border: 5px solid rgba(255, 255, 255, 0.3);
-  border-top: 5px solid #ff7f50;
+  border-top: 5px solid #6c62f8;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 20px;
@@ -1221,7 +1221,7 @@ h1,h2,h3,h4,h5,h6 {
   font-family: "Poppins", sans-serif!important;
   color: #ffffff!important;
   background: linear-gradient(135deg, #2e2a4e, #1e1b3e)!important;
-  border: 2px solid #ff7f50!important;
+  border: 2px solid #6c62f8!important;
   border-radius: 8px!important;
   appearance: none!important; /* Remove default arrow */
   outline: none!important;

@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "@/app/components/Header";
+import CursorEffect from "@/app/components/CursorEffect";
 
 const HowItWorksPage = () => {
     return (
@@ -10,7 +11,7 @@ const HowItWorksPage = () => {
                 color: "#FFFFFF",
                 lineHeight: "1.6",
                 padding: "20px",
-                background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
+                background: "url(/main-bg.png)",
                 minHeight: "100vh",
             }}
         >
@@ -18,7 +19,7 @@ const HowItWorksPage = () => {
             <Header />
 
             <header style={{ textAlign: "center", marginBottom: "40px", marginTop: "70px" }}>
-                <h1 style={{ fontSize: "2.5rem", margin: "10px 0", color: "#FF7F50" }}>How It Works</h1>
+                <h1 style={{ fontSize: "2.5rem", margin: "10px 0", color: "#6c62f8" }}>How It Works</h1>
                 <p style={{ fontSize: "1.2rem", color: "#E0E0E0", maxWidth: "700px", margin: "0 auto" }}>
                     You can swap crypto assets either in <strong>Standard</strong> mode or privately in{" "}
                     <strong>Private</strong> mode to send, swap, or bridge 4000 tokens with 8 million combinations of crypto
@@ -47,7 +48,7 @@ const HowItWorksPage = () => {
                         transition: "transform 0.3s ease",
                     }}
                 >
-                    <h2 style={{ fontSize: "1.8rem", color: "#FF7F50", marginBottom: "10px" }}>Step 1</h2>
+                    <h2 style={{ fontSize: "1.8rem", color: "#6c62f8", marginBottom: "10px" }}>Step 1</h2>
                     <p style={{ fontSize: "1rem", margin: "0", color: "#DDDDDD" }}>
                         Select the type of transaction you would like to use: either <strong>Standard</strong> or{" "}
                         <strong>Private</strong>.
@@ -65,7 +66,7 @@ const HowItWorksPage = () => {
                         transition: "transform 0.3s ease",
                     }}
               >
-                    <h2 style={{ fontSize: "1.8rem", color: "#FF7F50", marginBottom: "10px" }}>Step 2</h2>
+                    <h2 style={{ fontSize: "1.8rem", color: "#6c62f8", marginBottom: "10px" }}>Step 2</h2>
                     <p style={{ fontSize: "1rem", color: "#DDDDDD", margin: "0" }}>
                         Select the type of token to send <strong>[From]</strong> and the type of receiving token{" "}
                         <strong>[To]</strong> for the transaction.
@@ -94,7 +95,7 @@ const HowItWorksPage = () => {
                         transition: "transform 0.3s ease",
                     }}
                 >
-                    <h2 style={{ fontSize: "1.8rem", color: "#FF7F50", marginBottom: "10px" }}>Step 3</h2>
+                    <h2 style={{ fontSize: "1.8rem", color: "#6c62f8", marginBottom: "10px" }}>Step 3</h2>
                     <p style={{ fontSize: "1rem", margin: "0", color: "#DDDDDD" }}>
                         Send the entered amount of cryptocurrency to the generated address.
                     </p>
@@ -111,7 +112,7 @@ const HowItWorksPage = () => {
                         transition: "transform 0.3s ease",
                     }}
                >
-                    <h2 style={{ fontSize: "1.8rem", color: "#FF7F50", marginBottom: "10px" }}>Step 4</h2>
+                    <h2 style={{ fontSize: "1.8rem", color: "#6c62f8", marginBottom: "10px" }}>Step 4</h2>
                     <p style={{ fontSize: "1rem", margin: "0", color: "#DDDDDD" }}>
                         You can track the transaction completion on our <strong>progress page</strong>.
                     </p>
@@ -122,7 +123,7 @@ const HowItWorksPage = () => {
                     </p>
                 </div>
             </main>
-
+            <CursorEffect/>
             {/* Footer */}
             <footer style={{ textAlign: "center", marginTop: "50px", fontSize: "0.9rem", color: "#AAAAAA" }}>
                 <p>&copy; {new Date().getFullYear()} CadaBruh. All rights reserved.</p>
