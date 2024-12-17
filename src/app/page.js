@@ -13,6 +13,7 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
             initial={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.1 }} // Exit animation: fade-out and scale-up
             transition={{ duration: 1.5 }} // Animation duration
+            onClick={onDismiss}
             style={{
                 backgroundColor: "#141116",
                 minHeight: "100vh",
@@ -20,6 +21,7 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
                 justifyContent: "flex-start",
                 alignItems: "center",
                 flexDirection: "column",
+                cursor:"pointer",
             }}
         >
             <div style={{
