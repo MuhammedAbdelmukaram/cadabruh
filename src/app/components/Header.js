@@ -48,7 +48,7 @@ const Header = () => {
                         </li>
                         <li className="menu__item menu__item--social">
                             <Link
-                                href="https://x.com/cadabruh?s=21&t=Zpjhwlj04xbrfMcdPMqRDg"
+                                href="https://t.me/cadabruhswap"
                                 className="menu__link"
                                 aria-label="Telegram Link"
                             >
