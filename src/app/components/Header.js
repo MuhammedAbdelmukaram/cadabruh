@@ -63,7 +63,7 @@ const Header = () => {
                                 </svg>
                             </Link>
                             <Link
-                                href="https://twitter.com/cadabruhswap" // Replace with the correct X profile link
+                                href="https://x.com/cadabruh" // Replace with the correct X profile link
                                 className="menu__link"
                                 aria-label="X Link"
                                 target="_blank" // Opens in a new tab
