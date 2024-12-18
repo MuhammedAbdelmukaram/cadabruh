@@ -41,7 +41,7 @@ const LoadingScreen = ({ onDismiss, showButton }) => {
                 }}
             >
                 <video
-                    src="/Mp44.mp4"
+                    src="/Mp44Compressed.mp4"
                     autoPlay
                     playsInline
                     preload="auto"

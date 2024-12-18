@@ -42,7 +42,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className="menu__item">
-                            <Link href="faq" className="menu__link">
+                            <Link href="https://cadabruh.gitbook.io/cadabruh-docs" className="menu__link" target="_blank" >
                                 FAQs
                             </Link>
                         </li>
