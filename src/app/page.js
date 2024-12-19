@@ -135,7 +135,7 @@ const Page = () => {
                                 {/* Responsive iframe wrapper */}
                                 <div className={styles.iframeWrapper}>
                                     <iframe
-                                        src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=true"
+                                        src="https://houdiniswap.com/?tokenIn=ETH&tokenOut=SOL&widgetMode=true&partnerId=67639b8ae591d8310d41f13f"
                                         className={styles.iframe}
                                         onLoad={handleIframeLoad}
                                     ></iframe>
